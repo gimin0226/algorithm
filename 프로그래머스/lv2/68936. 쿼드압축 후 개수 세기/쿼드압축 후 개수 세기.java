@@ -1,13 +1,12 @@
 class Solution {
-   public int num0=0;
+   	public int num0=0;
 	public int num1=0;
 	public int[][] array;
 	public int[] solution(int[][] arr) {
 		array=arr;
 		recursion(arr.length,0,0);
-        int[] answer=new int[]{num0,num1};
+        	int[] answer=new int[]{num0,num1};
 		return answer;
-		
 	}
 
 	//매개변수 n(사각형의 길이), x(가로 위치), y(세로 위치)
@@ -20,13 +19,13 @@ class Solution {
 			}else {
 				num1++;
 			}
-            return;
+            	return;
 		}else {
 			recursion(n/2,x,y);
 			recursion(n/2,x+n/2,y);  
 			recursion(n/2,x,y+n/2);
 			recursion(n/2,x+n/2,y+n/2);
-            return;
+            	return;
 		}
 	}
     
