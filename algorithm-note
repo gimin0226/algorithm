@@ -1,0 +1,7 @@
+//Vector를 int[]로 변환
+
+Vector<Integer> vec=new Vector<Integer>();
+int[] result=vec.stream().mapToInt(i->i).toArray();
+Arrays.sort(result);
+//stream() 메소드는 Vector의 요소에 대한 스트림을 만들고, mapToInt(i -> i) 메소드는 각 요소를 int로 변환하며, 마지막으로 toArray() 메소드는 변환된 int들을 int[]로 모은다.
+//vec가 null이 아니고 모든 요소가 null이 아닌 Integer인 경우에만 작동한. 그렇지 않은 경우 NullPointerException이 발생할 수 있다.
