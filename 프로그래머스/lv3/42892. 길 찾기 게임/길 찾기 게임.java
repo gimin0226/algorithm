@@ -95,7 +95,10 @@ class Solution {
             nodes[i] = new Node(i+1,arr[i][0],arr[i][1]);
         }
         Arrays.sort(nodes, (a,b)->b.y-a.y);
-        
+	/*
+	    a와 b의 y필드 값을 비교하는 Comparator을 람다 표현식으로 정의
+	    b.y - a.y >0 이면 b가 a보다 뒤에 위치하게 된다.
+        */
         Node root=MakeTree(nodes);
         
         List<Integer> preorderList = new ArrayList<Integer>();
@@ -107,6 +110,7 @@ class Solution {
         return new int[][]{
             preorderList.stream().mapToInt(Integer::intValue).toArray(),
             postorderList.stream().mapToInt(Integer::intValue).toArray(),
+	//List를 스트림으로 변환-> mapToInt()메소드를 통해 Integer객체의 intValue메소드를 호출하여 그 결과인 int 값을 요소로 하는 새로운 IntStream을 생성->그 후 스트림의 모든 요소를 배열로 모아서 반환
         };
     }
 }
