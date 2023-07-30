@@ -97,7 +97,7 @@ class Solution {
         Arrays.sort(nodes, (a,b)->b.y-a.y);
 	/*
 	    a와 b의 y필드 값을 비교하는 Comparator을 람다 표현식으로 정의
-	    b.y - a.y >0 이면 b가 a보다 뒤에 위치하게 된다.
+	    b.y - a.y >0 이면 b가 a보다 앞에 위치하게 된다.
         */
         Node root=MakeTree(nodes);
         
