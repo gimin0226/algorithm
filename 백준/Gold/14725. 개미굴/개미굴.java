@@ -57,9 +57,6 @@ public class Main {
             recursion(0,entry.getValue());
         }
 
-
-       // System.out.println(root.child.containsKey("B"));
-
     }
 
 }
