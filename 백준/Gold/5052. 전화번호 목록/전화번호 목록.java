@@ -35,13 +35,10 @@ public class Main{
             }else{
 
                 if(i==str.length()-1){
-                //    System.out.println("끝1");
                     return false;
                 }
                 Node node=move.child.get(str.charAt(i));
-               // System.out.println(node.data);
                 if(node.count==1){
-                //    System.out.println("끝2");
                     return false;
                 }
                 move= node;
@@ -56,23 +53,22 @@ public class Main{
     public static void main(String[] args) throws IOException {
         BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
         int n=Integer.parseInt(br.readLine());
-      //  System.out.println("sdfasd"+" "+n);
         boolean check=true;
 
-      //  Node root= new Node();
         for(int i=0;i<n;i++){
             check=true;
             Node root= new Node();
+            //트리를 초기화 해줘야하므로 반복문 안에 넣어줘야 함
             int k=Integer.parseInt(br.readLine());
-           // System.out.println("sdfasd"+" "+k);
             for(int j=0;j<k;j++){
                 String str=br.readLine();
-               // System.out.println(str);
                 if(!makeTree(root,str)){
                     System.out.println("NO");
                     check=false;
                     for(int t=0;t<k-j-1;t++){
                         br.readLine();
+                        //문자열을 모두 확인하기 전에 NO가 발생한다면
+                        //남아있는 문자열을 읽어서 없애줘야함
                     }
                     break;
                 }
