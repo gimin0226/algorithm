@@ -32,14 +32,6 @@ public class Main {
                 }
             }
         }
-/*
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                System.out.print(answer[i][j]+" ");
-            }
-            System.out.println();
-        }
-*/
 
         System.out.println(Arrays.stream(answer[n-1]).max().getAsInt());
 
