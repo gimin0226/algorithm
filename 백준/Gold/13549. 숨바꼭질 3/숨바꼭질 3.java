@@ -27,27 +27,17 @@ public class Main {
         while (!pq.isEmpty()) {
             Node node = pq.poll();
 
-            if (node.idx > 100000 || node.idx < 0) {
-                continue;
-            }
-            //System.out.println("poll" + node.idx + " " + node.time);
             if (node.idx * 2 <= 100000 && distance[node.idx * 2] > node.time) {
                 distance[node.idx * 2] = node.time;
                 pq.add(new Node(node.idx * 2, node.time));
-                // System.out.println("1 "+node.idx*2+" "+node.time);
-
             }
             if (node.idx + 1 <= 100000 && distance[node.idx + 1] > node.time + 1) {
                 distance[node.idx + 1] = node.time + 1;
                 pq.add(new Node(node.idx + 1, node.time + 1));
-                //  System.out.println("2 "+(node.idx+1)+" "+(node.time+1));
-
             }
             if (node.idx - 1 >= 0 && distance[node.idx - 1] > node.time + 1) {
                 distance[node.idx - 1] = node.time + 1;
                 pq.add(new Node(node.idx - 1, node.time + 1));
-                //System.out.println("3 "+(node.idx-1)+" "+(node.time+1));
-
             }
         }
         System.out.println(distance[end]);
@@ -68,13 +58,7 @@ public class Main {
             } else if (node.time > this.time) {
                 return -1;
             }
-            else{
-                if(Math.abs(end-this.time)<Math.abs(end-node.time)){
-                    return -1;
-                }else{
-                    return 1;
-                }
-            }
+            return 0;
 
         }
     }
