@@ -18,10 +18,9 @@ public class Main {
         st=new StringTokenizer(br.readLine()," ");
         int t=st.countTokens();
         int[] arr=new int[n];
-        Node[] node= new Node[n];
+
         for(int i=0;i<t;i++){
             arr[i]=Integer.parseInt(st.nextToken());
-            node[i]=new Node(arr[i],i);
         }
         deque=new LinkedList<>();
         for(int i=0;i<n;i++){
