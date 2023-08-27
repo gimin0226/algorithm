@@ -25,11 +25,9 @@ void BackTracking(int num) {
 					for (k = x; k <= h; k++) {
 						if (road[k][y]==1) {
 							y += 1;
-						//	printf("x:%d y:%d\n", k, y);
 						}
 						else if (road[k][y-1]==1) {
 							y -= 1;
-						//	printf("x:%d y:%d\n", k, y);
 						}
 					}
 
@@ -37,7 +35,6 @@ void BackTracking(int num) {
 						count += 1;
 					}
 					else {
-						//printf("i:%d j:%d y:%d t:%d", i, j, y, t);
 						break;
 					}			
 				}
@@ -81,13 +78,6 @@ int main(void) {
 		cin >> x >> y;
 		road[x][y] = 1;
 	}
-
-	/*for (int i = 1; i <= h; i++) {
-		for (int j = 0; j <=n; j++) {
-			cout << road[i][j] << " ";
-		}cout << endl;
-	}
-	*/
 	int count = 0;
 	int x, y;
 	for (int t = 1; t <= n; t++) {
@@ -97,28 +87,19 @@ int main(void) {
 		for (k = x; k <= h; k++) {
 			if (road[k][y] == 1) {
 				y += 1;
-				//	printf("x:%d y:%d\n", k, y);
 			}
 			else if (road[k][y - 1] == 1) {
 				y -= 1;
-				//	printf("x:%d y:%d\n", k, y);
 			}
 		}
-
 		if (y == t) {
 			count += 1;
 		}
 		else {
-			//printf("i:%d j:%d y:%d t:%d", i, j, y, t);
 			break;
 		}
 	}
 	if (count == n) {
-	/*	for (int i = 1; i <= h; i++) {
-			for (int j = 0; j <= n; j++) {
-				cout << road[i][j] << " ";
-			}cout << endl;
-		}*/
 		cout << "0";
 		return 0;
 	}
