@@ -35,7 +35,6 @@ int main(void) {
 		auto it = myset.lower_bound(weight);
 		
 		if (it != myset.end()) {
-			int t = *it;
 			myset.erase(it);
 			sum += cost;
 			//cout << t<<" "<<cost << " " << weight << " " << sum << "\n";
