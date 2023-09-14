@@ -1,44 +1,54 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include<bits/stdc++.h>
+
 using namespace std;
-int M;
-vector<int> f1;
-string result = "Messi Gimossi";
-int search(int Step, int order);
-int main()
-{
-    cin >> M;
-    f1.push_back(5);  //Messi
-    f1.push_back(13); //Messi Gimossi
-    int a = 5;
-    int b = 13;
-    int mm = 0;
-    while (mm < M)
-    {
-        mm = a + b + 1;     //(n-1)+1+(n-2)
-        a = b;
-        b = mm;
-        f1.push_back(mm);
-    }
-    int size=f1.size();
-    int answer = search(size, M);
-    if (answer == -1 || answer == 6)
-    {
-        cout << "Messi Messi Gimossi" << endl;
-    }
-    else
-        cout << result[answer - 1];    
+
+int N, M;
+int m;
+vector<int> vec;
+string m1, m2;
+void recursion(int n, int m) {
+	if (m == 6) {
+		cout << "Messi Messi Gimossi";
+		return;
+	}
+	if (m<=vec[1]) {
+		cout << m2[m - 1];
+		return;
+	}
+	if (m == vec[n - 1] + 1) {
+		cout << "Messi Messi Gimossi";
+		 return;
+	}
+	else if (m > vec[n - 1] + 1) {
+	//	printf("a n-2:%d k:%d k-vec[n-1]-1:%d\n", n - 2, k, k-vec[n-1]-1);
+		recursion(n - 2, m - vec[n - 1] - 1);
+	}
+	else if (m < vec[n - 1] + 1) {
+		//printf("b n-1:%d k:%d\n", n - 1, k);
+		recursion(n - 1, m);
+	}
 }
-int search(int Step, int order)
-{
-    // 이제 쪼개주기.    
-    if (order <= f1[1])
-        return order;
-    if (order <= f1[Step - 1]) // N-1구간
-        return search(Step - 1, order);
-    else if (order == f1[Step - 1] + 1) // 공백
-        return -1;
-    else //N-2구간
-        return search(Step - 2, order - f1[Step - 1] - 1);
+
+int main(void) {
+	m1 = "Messi";
+	m2 = "Messi Gimossi";
+	cin >> m;
+	vec.push_back(5);
+	vec.push_back(13);
+	M = m;
+
+	
+	int i = 0;
+	int a = 5, b = 13;
+	int x = 0;
+	while (x<M) {
+		x = a + b + 1;   
+		a = b;
+		b = x;
+		vec.push_back(x);
+		
+	}
+
+	N = vec.size();
+	recursion(N, M);
 }
