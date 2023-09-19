@@ -10,7 +10,7 @@ long long init(int start, int end, int node) {
 	if (start == end)return tree[node] = num[start];
 
 	int mid = (start + end) / 2;
-	return tree[node]=(init(start, mid, node * 2) * init(mid + 1, end, node * 2 + 1)) % X;
+	return tree[node]=init(start, mid, node * 2) * init(mid + 1, end, node * 2 + 1) % X;
 }
 
 long long sum(int start, int end, int left, int right, int node) {
@@ -18,7 +18,7 @@ long long sum(int start, int end, int left, int right, int node) {
 
 	if (left <= start && end <= right)return tree[node];
 	int mid = (start + end) / 2;
-	return (sum(start, mid, left, right, node * 2) * sum(mid + 1, end, left, right, node * 2 + 1))%X;
+	return sum(start, mid, left, right, node * 2) * sum(mid + 1, end, left, right, node * 2 + 1)%X;
 }
 
 long long update(int start, int end, int index, int node,int dif) {
@@ -28,7 +28,7 @@ long long update(int start, int end, int index, int node,int dif) {
 
 	if (start == end)return tree[node];
 	int mid = (start + end) / 2;
-	return tree[node] = (update(start, mid, index, node * 2, dif) * update(mid + 1, end, index, node * 2 + 1, dif))%X;
+	return tree[node] = update(start, mid, index, node * 2, dif) * update(mid + 1, end, index, node * 2 + 1, dif)%X;
 
 }
 int main(void) {
