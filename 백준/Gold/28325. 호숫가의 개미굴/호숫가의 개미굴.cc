@@ -26,7 +26,7 @@ int main(void) {
 			ans += t / 2;
 		}
 		else {
-			ans += t / 2 + 1;
+			ans += t / 2 ;
 		}
 		cout << ans;
 		return 0;
@@ -41,7 +41,7 @@ int main(void) {
 				ans += t / 2;
 			}
 			else {
-				ans += t / 2 + 1;
+				ans += t / 2+1;
 			}
 			cout << ans;
 			return 0;
@@ -55,7 +55,7 @@ int main(void) {
 		//	cout << ans<<endl;
 		}
 		else {
-			ans += t / 2 + 1;
+			ans += t / 2 +1;
 		//	cout << ans << endl;
 		}
 	}
