@@ -6,35 +6,62 @@ int check2[250001] = { 0 };
 
 int main(void) {
 	int n; cin >> n;
-	int x;
-	vector<int> v;
-	int ans = 0;
+	long long x;
+	vector<long long> v;
+	long long ans = 0;
+	queue<int> que;
+	int first;
+	int end;
 	for (int i = 1; i <= n; i++) {
+		
 		cin >> x;
 		v.push_back(x);
 		if (x != 0) {
+			que.push(i);
 			ans += x;
 			check[i] = 1;
 		}
 	}
-	if (check[1] == 0 && check2[n] == 0 && check2[2] == 0) {
-	//	cout << "sDF";
-		ans++;
-		check2[1] = 1;
+	if (que.size() == 0) {
+		int t = n;
+		if (t % 2 == 0) {
+			ans += t / 2;
+		}
+		else {
+			ans += t / 2 + 1;
+		}
+		cout << ans;
+		return 0;
 	}
-	for (int i = 2; i < n; i++) {
-		if (check[i] == 1)continue;
-		if (check2[i - 1] == 0 && check2[i + 1] == 0) {
-	//		cout << i << " ";
-			check2[i] = 1;
-			ans++;
+	first = que.front();
+	while (true) {
+		if (que.size() == 1) {
+			end = que.front();
+			int t=(n - end + first - 1);
+			if (t % 2 == 0) {
+				ans += t / 2;
+			}
+			else {
+				ans += t / 2 + 1;
+			}
+			cout << ans;
+			return 0;
+		}
+		int x = que.front();
+		que.pop();
+		int y = que.front();
+		int t = y - x - 1;
+		if (t % 2 == 0) {
+			ans += t / 2;
+		//	cout << ans<<endl;
+		}
+		else {
+			ans += t / 2 + 1;
+		//	cout << ans << endl;
 		}
 	}
-	if (check[n] == 0 && check2[n-1] == 0 && check2[1] == 0) {
-		//cout << "qwe";
-		ans++;
-		check2[n] = 1;
-	}
-	cout << ans;
-}
 	
+	
+
+	
+}
