@@ -56,7 +56,9 @@ int main() {
     ios::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int n,m,k;
-   
+    // n : 수의 개수 
+    // m : 수의 변경이 일어나는 횟수
+    // k : 구간의 합을 구하는 횟수
     cin >> n >> m >> k; 
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
