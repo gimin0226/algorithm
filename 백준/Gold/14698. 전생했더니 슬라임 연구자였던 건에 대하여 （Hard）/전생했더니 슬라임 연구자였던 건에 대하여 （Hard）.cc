@@ -35,7 +35,7 @@ int main() {
             sum = ((sum % 1000000007) * (t % 1000000007)) % 1000000007;
          //   cout << t << endl;
             if (pq.empty()) {
-                cout << sum  << '\n';
+                cout << sum % 1000000007 << '\n';
                 break;
             }
             pq.push(t);
