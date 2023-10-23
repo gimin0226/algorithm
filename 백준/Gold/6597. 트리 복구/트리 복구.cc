@@ -6,7 +6,6 @@ string s1, s2;
 int k = 0;
 char arr[1000] = { 0 };
 void f(int t, int start, int end) {
-//	printf("start:%d end:%d t:%d s1[k]:%c\n", start, end, t, s1[k]);
 	if (start > end) return; // 범위가 잘못된 경우 반환
 
 	if (start == end) {
@@ -41,9 +40,6 @@ int main(void) {
 		for (int i = 0; i < 100; i++)arr[i] = 0;
 		k = 0;
 		f(1, 0, s2.length());
-		/*for (int i = 0; i < 100; i++) {
-			cout << i << " " << arr[i] << endl;
-		}*/
 		f2(1);
 		cout << endl;
 	}
