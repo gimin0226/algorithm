@@ -1,5 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
+const int INF = 1e8;
+int F = 0;
+int nearest[1001];
+int dist[1001];
+vector<pair<int,int>> vec[10001];
+int visited[1001] = { 0 };
 
 
 int main(void) {
