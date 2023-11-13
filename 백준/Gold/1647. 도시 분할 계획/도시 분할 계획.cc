@@ -49,6 +49,9 @@ bool union_parent(int x, int y) {
 
 }
 int main() {
+    cin.tie(NULL);
+    cout.tie(NULL);
+    ios::sync_with_stdio(false);
     int m;
     cin >> n>> m; vector<node> v;
     for (int i = 1; i <= n; i++)parent[i] = i;
