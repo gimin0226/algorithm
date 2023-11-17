@@ -28,18 +28,15 @@ void make(int x,int y,int d,int r) {
 	
 	for (int i = 0; i < r-1; i++) {
 		int t = dq.size();	
-	//	cout << "dq사이즈:" << t << endl;
 		for (int j = 0; j < t; j++) {
 			int p = dq.back(); dq.pop_back();
-			//cout << p << " ";
 			dq2.push_front(p);
 			p = (p + 1) % 4;
-			//cout << p << " ";
 			dq3.push_back(p);
 			x += dx[p];
 			y += dy[p];
 			arr[x][y] += 1;
-		}//cout << " / ";
+		}
 		t = dq3.size();
 		for (int j = 0; j < t; j++) {
 			int p = dq3.front();
@@ -49,17 +46,11 @@ void make(int x,int y,int d,int r) {
 		t = dq2.size();
 		for (int j = 0; j < t; j++) {
 			int p = dq2.front();
-		//	cout << p << " ";
 			x += dx[p]; y += dy[p];
 			arr[x][y] += 1;
 			dq.push_back(p);
 			dq2.pop_front();
-		}/*cout << endl;
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				cout << arr[i][j] << " ";
-			}cout << endl;
-		}cout << endl;*/
+		}
 	}
 }
 int main(void){
@@ -77,7 +68,6 @@ int main(void){
 	for (int i = 0; i < 100; i++) {
 		for (int j = 0; j < 100; j++) {
 			if (!arr[i][j] || !arr[i + 1][j] || !arr[i][j + 1] || !arr[i + 1][j + 1])continue;
-	//		cout << i << " " << j << endl;
 			num++;
 		}
 	}
