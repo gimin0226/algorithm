@@ -1,49 +1,46 @@
-import java.util.*;
-import java.lang.*;
 import java.io.*;
 
-// The main method must be in a class named "Main".
 class Main {
-    public static String original;
-    public static String current_string;
-    public static String min_string;
-    public static String parts[] =new String[4];
-    
+    static String original;
+    static String best;
+    static String[] parts = new String[3];
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         original = br.readLine();
-        current_string = original;
-        f(1);
-        System.out.println(min_string);
+
+        dfsSplit(0, original);
+        System.out.println(best);
     }
 
-    public static void f(int depth){
-        if(depth==3){
-            parts[3]=current_string;
-        //    System.out.println("depth: 3, parts[3]"+parts[3]);
-            String candidate = reverse();
-            updateMin(candidate);
+    static void dfsSplit(int depth, String remain) {
+        if (depth == 2) {
+            parts[2] = remain;
+            String candidate = buildReversed();
+            updateBest(candidate);
             return;
         }
-        for(int i=1;i<=current_string.length()-(3-depth);i++){
-            String copy_string = current_string;
-            parts[depth]= copy_string.substring(0,i);
-          //  System.out.println("depth: "+depth+ ", parts[depth]:"+parts[depth]);
-            current_string = copy_string.substring(i);
-            f(depth+1);
-            current_string = copy_string;
+
+        // 남은 부분에서 이번 조각 길이 선택
+        // depth 0이면 앞으로 2조각이 더 필요 -> 최소 2글자 남겨야 함
+        // depth 1이면 앞으로 1조각 더 필요 -> 최소 1글자 남겨야 함
+        int need = 2 - depth;
+
+        for (int i = 1; i <= remain.length() - need; i++) {
+            parts[depth] = remain.substring(0, i);
+            dfsSplit(depth + 1, remain.substring(i));
         }
     }
 
-    public static String reverse(){
-        return new StringBuilder(parts[1]).reverse().toString()
-            + new StringBuilder(parts[2]).reverse().toString()
-            + new StringBuilder(parts[3]).reverse().toString();
+    static String buildReversed() {
+        return new StringBuilder(parts[0]).reverse().toString()
+             + new StringBuilder(parts[1]).reverse().toString()
+             + new StringBuilder(parts[2]).reverse().toString();
     }
-    
-    public static void updateMin(String candidate){
-        if(min_string==null||min_string.isBlank()||candidate.compareTo(min_string)<0){
-            min_string=candidate;
+
+    static void updateBest(String candidate) {
+        if (best == null || candidate.compareTo(best) < 0) {
+            best = candidate;
         }
     }
 }
